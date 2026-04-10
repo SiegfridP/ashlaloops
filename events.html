@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Ashlaloops</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <style>
+        :root {
+            --sage-green: #525951;
+            --peach-accent: #f8dabe;
+            --light-bg: #fdf6f0;
+        }
+
+        .event-hero {
+            background-color: var(--light-bg);
+            border-radius: 40px;
+            overflow: hidden;
+            border: 1px solid rgba(82, 89, 81, 0.1);
+        }
+
+        .portrait-feature-wrapper {
+            width: 100%;
+            height: 550px; 
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            background: #eee;
+        }
+
+        .portrait-feature-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--sage-green);
+            letter-spacing: -2px;
+            line-height: 1;
+        }
+
+        .editorial-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--sage-green);
+        }
+
+        .btn-ashla-centered {
+            min-width: 260px;
+            height: 55px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .btn-solid-sage {
+            background-color: var(--sage-green);
+            color: #ffffff !important;
+            border: 2px solid var(--sage-green);
+        }
+
+        .btn-solid-sage:hover {
+            background-color: var(--peach-accent);
+            border-color: var(--peach-accent);
+            color: var(--sage-green) !important;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-sage {
+            background-color: transparent;
+            border: 2px solid var(--sage-green) !important;
+            color: var(--sage-green) !important;
+        }
+
+        .btn-outline-sage:hover {
+            background-color: var(--sage-green);
+            color: white !important;
+            transform: translateY(-2px);
+        }
+
+        .event-card {
+            border: none;
+            background: transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-img-portrait, .modal-body img {
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .event-img-portrait:hover, .modal-body img:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .event-img-portrait {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            border-radius: 24px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .date-badge {
+            background-color: var(--peach-accent);
+            color: var(--sage-green);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        #lightboxModal {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        #lightboxModal .modal-dialog {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0 auto;
+        }
+
+        #lightboxModal .modal-content {
+            background: transparent !important;
+            border: none;
+        }
+
+        #lightboxModal .modal-body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            width: 100%;
+        }
+
+        #lightboxImage, #lightboxVideo {
+            max-height: 85vh;
+            max-width: 95vw;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        /* This is the magic fix for your headers */
+.event-card h5 {
+    
+    min-height: 2rem; 
+    line-height: 1.1;
+    display: flex;
+    align-items: flex-end; /* This anchors the text to the bottom of that 'box' */
+    margin-top: 1px;      /* Consistent gap from the image */
+    margin-bottom: 10px;
+}
+.event-card .lead {
+    margin-top: 0;
+    display: block;
+    line-height: 1.2;
+}
+    </style>
+</head>
+<body>
+
+<div class="logo-wrapper site-footer-modern py-2 text-center">
+    <a href="index.html">
+        <img src="images/ashlogo1.png" alt="Ashlaloops Logo" class="nav-logo" style="height: 40px; width: auto;">
+    </a>
+</div>
+
+<nav class="navbar navbar-expand navbar-dark site-footer-modern p-0 shadow-sm" style="border-top: 1px solid rgba(248, 218, 190, 0.1);">
+    <div class="container-fluid justify-content-center">
+        <ul class="navbar-nav mx-auto gap-3">
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="aboutus.html">ABOUT US</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1 active" href="events.html">EVENTS</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="services.html">SERVICES</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="contact.html">CONTACT</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="order.html">ORDER NOW</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container py-5">
+    <section class="event-hero p-4 p-md-5 mb-5 shadow-sm">
+        <div class="row align-items-center">
+            <div class="col-lg-5 mb-4 mb-lg-0">
+                <div class="portrait-feature-wrapper">
+                    <img src="images/currentstatus.png" alt="Ashlaloops Studio">
+                </div>
+            </div>
+            <div class="col-lg-7 ps-lg-5">
+                <span class="text-uppercase fw-bold d-block mb-2" style="color: var(--sage-green); letter-spacing: 2px; font-size: 0.75rem;">Current Status</span>
+                <h1 class="section-title mb-4">IN THE "STUDIO"</h1>
+                <h3 class="fw-bold h4 mb-3" style="color: var(--sage-green);">Focusing on your custom creations.</h3>
+                <div class="editorial-text mb-4">
+                    <p>I don’t have any convention appearances scheduled at the moment. Instead, I am dedicating all my time to the <strong>commission queue</strong>—bringing your specific visions to life, one loop at a time.</p>
+                </div>
+                <div class="d-flex flex-column flex-md-row gap-3">
+                    <a href="order.html" class="btn-ashla-centered btn-solid-sage">Start a Custom Order</a>
+                    <a href="contact.html" class="btn-ashla-centered btn-outline-sage">Invite Us to an Event</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-5 pt-4">
+        <div class="row align-items-end mb-3">
+            <div class="col-md-8">
+                <h2 class="fw-bold" style="color: var(--sage-green); font-size: 2.5rem; letter-spacing: -1px;">EVENT RECAPS</h2>
+                <p class="editorial-text">Highlights and memories from our favorite days out in the community.</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="event-card" data-bs-toggle="modal" data-bs-target="#coffeeLabModal">
+                    <div class="position-relative overflow-hidden rounded-4 mb-3">
+                         <img src="images/events/coffeelab/coffeelabcover.png" 
+     class="img-fluid" 
+     style="aspect-ratio: 1 / 1; height: 250px; width: 100%; object-fit: cover; border-radius: 24px;" 
+     alt="Coffee Lab">
+                         <div class="position-absolute top-0 start-0 p-3">
+                             <span class="date-badge shadow-sm">MOST RECENT</span>
+                         </div>
+                    </div>
+                    <h5 class="fw-bold" style="color: var(--sage-green);">The Coffee Lab & Lounge Flea Market</h5>
+                    <span class="lead">Balibago, Angeles, Pampanga</span>
+                    <p class="small editorial-text">February 14-15, 2026</p>
+                </div>
+            </div>
+
+           <div class="col-md-4">
+        <div class="event-card" data-bs-toggle="modal" data-bs-target="#hauChristmasModal">
+            <div class="position-relative overflow-hidden rounded-4 mb-4">
+                <img src="images/events/studentpreneurxmas/xmas1.png" 
+                     class="img-fluid" 
+                     style="aspect-ratio: 1 / 1; height: 250px; width: 100%; object-fit: cover; border-radius: 24px;"
+                     alt="Studentpreneur Christmas">
+            </div>
+            <h5 class="fw-bold" style="color: var(--sage-green); height: 2.4rem; display: flex; align-items: flex-end; line-height: 1.1; margin-bottom: 8px;">Studentpreneur Christmas @Holy Angel University</h5>
+            <span class="lead">Angeles, Pampanga</span>
+            <p class="small editorial-text">November 25, 2025</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="event-card" data-bs-toggle="modal" data-bs-target="#jungleBaseModal">
+            <div class="position-relative overflow-hidden rounded-4 mb-1">
+                <img src="images/events/junglebasefm/junglebasecover.png" 
+                     class="img-fluid" 
+                     style="aspect-ratio: 1 / 1; height: 250px; width: 100%; object-fit: cover; border-radius: 24px;" 
+                     alt="Jungle Base">
+            </div>
+            <h5 class="fw-bold" style="color: var(--sage-green); height: 2.4rem; display: flex; align-items: flex-end; line-height: 1.1; margin-bottom: 8px;">Jungle Base Flea Market</h5>
+            <span class="lead">San Fernando, Pampanga</span>
+            <p class="small editorial-text">September 20-21, 2025</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="event-card" data-bs-toggle="modal" data-bs-target="#orchidsModal">
+            <div class="position-relative overflow-hidden rounded-4 mb-4">
+                <img src="images/events/orchids/occover.png" 
+                     class="img-fluid" 
+                     style="aspect-ratio: 1 / 1; height: 250px; width: 100%; object-fit: cover; border-radius: 24px;" 
+                     alt="Orchids Community">
+            </div>
+            <h5 class="fw-bold" style="color: var(--sage-green); height: 2.4rem; display: flex; align-items: flex-end; line-height: 1.1; margin-bottom: 8px;">Orchids Community Place Flea Market</h5>
+            <span class="lead">San Fernando, Pampanga</span>
+            <p class="small editorial-text">August 30, 2025</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="event-card" data-bs-toggle="modal" data-bs-target="#spcfModal">
+            <div class="position-relative overflow-hidden rounded-4 mb-1">
+                <img src="images/events/spcf/spcfcover.png" 
+                     class="img-fluid" 
+                     style="aspect-ratio: 1 / 1; height: 250px; width: 100%; object-fit: cover; border-radius: 24px;" 
+                     alt="SPCF Event">
+            </div>
+            <h5 class="fw-bold" style="color: var(--sage-green); height: 2.4rem; display: flex; align-items: flex-end; line-height: 1.1; margin-bottom: 8px;">SPCF Event</h5>
+            <span class="lead">Balibago, Angeles, Pampanga</span>
+            <p class="small editorial-text">August 12, 2025</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="event-card" data-bs-toggle="modal" data-bs-target="#blueShakaModal">
+            <div class="position-relative overflow-hidden rounded-4 mb-1">
+                <img src="images/events/blueshakafm/bscover.png" 
+                     class="img-fluid" 
+                     style="aspect-ratio: 1 / 1; height: 250px; width: 100%; object-fit: cover; border-radius: 24px;" 
+                     alt="Blue Shaka">
+            </div>
+            <h5 class="fw-bold" style="color: var(--sage-green); height: 2.4rem; display: flex; align-items: flex-end; line-height: 1.1; margin-bottom: 8px;">Blue Shaka Flea Market</h5>
+            <span class="lead">Clark Freeport, Angeles, Pampanga</span>
+            <p class="small editorial-text">July 12, 2025</p>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="event-card" data-bs-toggle="modal" data-bs-target="#prideModal">
+            <div class="position-relative overflow-hidden rounded-4 mb-4">
+                <img src="images/events/studentpreneurpm/spmcover.png" 
+                     class="img-fluid" 
+                     style="aspect-ratio: 1 / 1; height: 250px; width: 100%; object-fit: cover; border-radius: 24px;" 
+                     alt="Pride Month">
+            </div>
+            <h5 class="fw-bold" style="color: var(--sage-green); height: 2.4rem; display: flex; align-items: flex-end; line-height: 1.1; margin-bottom: 8px;">Studentpreneur Pride Month Event @Holy Angel University</h5>
+            <span class="lead">Angeles, Pampanga</span>
+            <p class="small editorial-text">June 30, 2025</p>
+        </div>
+    </div>
+        </div>
+    </section>
+</main>
+
+<div class="modal fade" id="coffeeLabModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="border-radius: 30px; border: none; background-color: #fff;">
+            <div class="modal-header border-0 px-4 pt-4 pb-0">
+                <h5 class="modal-title fw-bold" style="color: var(--sage-green);">The Coffee Lab & Lounge Photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab1.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab2.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 2"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab3.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 3"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab4.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 4"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab5.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 5"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab6.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 6"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab7.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 7"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab8.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 8"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab9.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 9"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab10.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 10"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab11.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 11"></div>
+                    <div class="col-4"><img src="images/events/coffeelab/coffeelab12.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 12"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="hauChristmasModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="border-radius: 30px; border: none; background-color: #fff;">
+            <div class="modal-header border-0 px-4 pt-4 pb-0">
+                <h5 class="modal-title fw-bold" style="color: var(--sage-green);">HAU Christmas Photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/events/studentpreneurxmas/xmas2.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurxmas/xmas3.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurxmas/xmas4.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurxmas/xmas5.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurxmas/xmas6.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurxmas/xmas7.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="jungleBaseModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="border-radius: 30px; border: none; background-color: #fff;">
+            <div class="modal-header border-0 px-4 pt-4 pb-0">
+                <h5 class="modal-title fw-bold" style="color: var(--sage-green);">Jungle Base Flea Market Photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/events/junglebasefm/jb1.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/junglebasefm/jb2.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/junglebasefm/jb3.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/junglebasefm/jb4.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/junglebasefm/jb5.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="orchidsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="border-radius: 30px; border: none; background-color: #fff;">
+            <div class="modal-header border-0 px-4 pt-4 pb-0">
+                <h5 class="modal-title fw-bold" style="color: var(--sage-green);">Orchids Community Photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/events/orchids/oc1.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/orchids/oc2.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/orchids/oc3.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/orchids/oc4.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/orchids/oc5.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/orchids/oc6.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/orchids/oc7.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/orchids/oc8.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/orchids/oc10.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="spcfModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="border-radius: 30px; border: none; background-color: #fff;">
+            <div class="modal-header border-0 px-4 pt-4 pb-0">
+                <h5 class="modal-title fw-bold" style="color: var(--sage-green);">SPCF Photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/events/spcf/spcf1.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/spcf/spcf2.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/spcf/spcf4.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/spcf/spcf3.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/spcf/spcf5.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="blueShakaModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="border-radius: 30px; border: none; background-color: #fff;">
+            <div class="modal-header border-0 px-4 pt-4 pb-0">
+                <h5 class="modal-title fw-bold" style="color: var(--sage-green);">Blue Shaka Photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/events/blueshakafm/bs1.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                   <div class="col-4"><img src="images/events/blueshakafm/bs2.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                   <div class="col-4"><img src="images/events/blueshakafm/bs5.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                   <div class="col-4"><img src="images/events/blueshakafm/bs4.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                   <div class="col-4"><img src="images/events/blueshakafm/bs3.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="prideModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="border-radius: 30px; border: none; background-color: #fff;">
+            <div class="modal-header border-0 px-4 pt-4 pb-0">
+                <h5 class="modal-title fw-bold" style="color: var(--sage-green);">HAU Pride Month Photos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/events/studentpreneurpm/spm1.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurpm/spm2.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurpm/spm3.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurpm/spm4.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurpm/spm5.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                    <div class="col-4"><img src="images/events/studentpreneurpm/spm6.png" class="img-fluid rounded-4 shadow-sm" alt="Photo 1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content border-0 bg-transparent">
+            <div class="modal-header border-0 p-0">
+                <button type="button" class="btn-close btn-close-white ms-auto m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="" id="lightboxImage" class="img-fluid shadow-lg" alt="Full view" style="display: none;">
+                <video id="lightboxVideo" controls class="shadow-lg" style="display: none;"></video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer-modern py-3">
+    <div class="container">
+        <div class="row gy-3 align-items-stretch">
+            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+                <div class="mb-2">
+                    <img src="images/ashlogo1.png" alt="Ashlaloops Logo" class="footer-logo" style="max-height: 40px; width: auto;"> 
+                </div>
+                <p class="mb-3 footer-text" style="max-width: 300px; color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.4;">
+                    Dedicated to providing premium handmade pieces and memorable events. Your satisfaction is our signature.
+                </p>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start align-items-center">
+                    <a href="https://www.facebook.com/profile.php?id=100077359389928" class="social-icon-link" title="Facebook"><img src="social-media/facebook.svg" alt="Facebook" style="height: 20px;"></a>
+                    <a href="https://www.instagram.com/ashlaloops" class="social-icon-link" title="Instagram"><img src="social-media/instagram.svg" alt="Instagram" style="height: 20px;"></a>
+                    <a href="https://www.tiktok.com/@ashlaloops" class="social-icon-link" title="TikTok"><img src="social-media/tiktok.svg" alt="TikTok" style="height: 20px;"></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center text-lg-start pt-lg-2">
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">Contact</h6>
+                <p class="mb-1 footer-text" style="font-size: 13px;"><strong>Phone:</strong> 09532505666</p>
+                <p class="mb-1 footer-text" style="font-size: 13px;"><strong>Email:</strong> ashlaloops@gmail.com</p>
+                <p class="mb-0 footer-text" style="font-size: 13px;"><strong>Loc:</strong> Del Pilar, San Fernando, Pampanga</p>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center text-lg-start pt-lg-2">
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">Order Status</h6>
+                <p class="mb-1 footer-text" style="font-size: 13px;">Status: <span style="color: #98fb98;">Open for Commissions</span></p>
+                <p class="mb-0 footer-text" style="font-size: 13px;">Lead Time: 2-3 Weeks</p>
+            </div>
+            <div class="col-lg-2 col-md-12 text-center text-lg-end pt-lg-2">
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">INQUIRIES</h6>
+                <a href="contact.html" class="btn btn-ashla rounded-pill shadow-sm" style="font-size: 12px; padding: 6px 16px;">Get In Touch</a>
+            </div>
+        </div>
+        <div class="row mt-3 pt-2 border-top" style="border-color: rgba(248, 218, 190, 0.1) !important;">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0 copyright-text" style="font-size: 12px; opacity: 0.6;">© 2026 Ashlaloops. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0 copyright-text" style="font-size: 12px; opacity: 0.6;">Website by <span style="color: #f8dabe;">Team CPHMD</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const lbModalElement = document.getElementById('lightboxModal');
+    const lbModalInstance = new bootstrap.Modal(lbModalElement);
+    const lbImage = document.getElementById('lightboxImage');
+    const lbVideo = document.getElementById('lightboxVideo');
+
+    document.addEventListener('click', function (e) {
+        const isEventImg = e.target.classList.contains('event-img-portrait');
+        const isGalleryImg = e.target.closest('.modal-body') && e.target.tagName === 'IMG';
+
+        if (isEventImg || isGalleryImg) {
+            const mediaSrc = e.target.getAttribute('src');
+            
+            if (mediaSrc.toLowerCase().match(/\.(mp4|webm|ogg)$/)) {
+                lbImage.style.display = 'none';
+                lbVideo.style.display = 'block';
+                lbVideo.src = mediaSrc;
+                lbVideo.play();
+            } else {
+                lbVideo.style.display = 'none';
+                lbVideo.pause();
+                lbImage.style.display = 'block';
+                lbImage.src = mediaSrc;
+            }
+            lbModalInstance.show();
+        }
+    });
+
+    lbModalElement.addEventListener('hidden.bs.modal', function () {
+        lbImage.src = "";
+        lbVideo.src = "";
+        lbVideo.pause();
+        lbImage.style.display = 'none';
+        lbVideo.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>

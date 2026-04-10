@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Ashlaloops</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <style>
+        :root {
+            --sage-green: #525951;
+            --peach-accent: #f8dabe;
+            --light-bg: #fdf6f0;
+        }
+
+        .editorial-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: var(--sage-green);
+        }
+
+        .quote-accent {
+            border-left: 3px solid var(--sage-green);
+            padding-left: 20px;
+            color: var(--sage-green);
+            opacity: 0.9;
+        }
+
+        .organic-shape {
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border: 4px solid var(--peach-accent);
+            transition: all 0.4s ease;
+        }
+
+        .section-label {
+            color: var(--sage-green);
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- How It Started Refinement --- */
+        .how-it-started-section {
+            margin-top: -10px !important; 
+            padding-top: 1.5rem !important; 
+            margin-bottom: 0 !important; /* Removed bottom margin entirely */
+        }
+
+        .how-it-started-heading {
+            font-size: 2.75rem !important; 
+            margin-top: 0 !important;
+            margin-bottom: 1.2rem !important;
+            color: var(--sage-green);
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+        }
+
+        /* --- Custom Button Style --- */
+        .btn-ashla {
+            background-color: var(--sage-green);
+            color: #ffffff;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-ashla:hover {
+            background-color: var(--peach-accent);
+            color: var(--sage-green);
+            transform: translateY(-2px);
+        }
+
+        .x-small { font-size: 0.75rem; }
+
+        /* --- Meet the Maker Panel --- */
+        .maker-panel {
+            background-color: var(--sage-green);
+            color: #ffffff;
+            border-radius: 40px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .maker-panel .section-label {
+            color: var(--peach-accent) !important;
+        }
+
+        .maker-panel h2 {
+            color: #ffffff !important;
+        }
+
+        .maker-panel .quote-accent {
+            border-left-color: var(--peach-accent);
+            color: var(--peach-accent);
+        }
+
+        .maker-panel .editorial-text {
+            color: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        /* Hover effect for the Maker's image */
+        .owner-img {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .owner-img:hover {
+            transform: scale(1.05) rotate(2deg);
+            filter: brightness(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
+        }
+
+        .owner-img:hover {
+            border-color: var(--sage-green);
+        }
+    </style>
+</head>
+<body>
+
+<div class="logo-wrapper site-footer-modern py-2 text-center">
+    <a href="index.html">
+        <img src="images/ashlogo1.png" alt="Ashlaloops Logo" class="nav-logo" style="height: 40px; width: auto;">
+    </a>
+</div>
+
+<nav class="navbar navbar-expand navbar-dark site-footer-modern p-0 shadow-sm" style="border-top: 1px solid rgba(248, 218, 190, 0.1);">
+    <div class="container-fluid justify-content-center">
+        <ul class="navbar-nav mx-auto gap-3">
+            <li class="nav-item">
+                <a class="nav-link small-nav-link py-1 active" href="aboutus.html">ABOUT US</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link small-nav-link py-1" href="events.html">EVENTS</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link small-nav-link py-1" href="services.html">SERVICES</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link small-nav-link py-1" href="contact.html">CONTACT</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link small-nav-link py-1" href="order.html">ORDER NOW</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container pt-3 pb-5">
+
+    <section class="row mt-4 mb-5 align-items-center">
+        <div class="col-md-5 mb-4 mb-md-0 text-center">
+            <div class="owner-container" style="position: relative; display: inline-block;">
+                <a href="https://www.facebook.com/profile.php?id=100077359389928" target="_blank">
+                    <img src="images/ashowner.png" alt="Angelica" class="img-fluid shadow-lg organic-shape owner-img" style="max-height: 400px; object-fit: cover;">
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-7">
+            <div class="maker-panel ms-md-2"> 
+                <span id="typewriter-label" class="section-label">
+                    The Heart of Ashlaloops
+                </span>
+                <h2 class="display-5 fw-bold mb-3" style="line-height: 1.1;">Meet the Maker</h2>
+                
+                <p class="lead fst-italic mb-4 quote-accent">
+                    "In every stitch, there is a piece of my heart and a lesson in patience."
+                </p>
+                
+                <p class="editorial-text mb-0">
+                    Hi, I’m <strong>Angelica</strong>—the hands and heart behind every piece. What started as a simple hobby has grown into something I truly love, and I’m so grateful to share it with you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-started-section mb-2 p-4 p-md-5 rounded-5" style="background-color: var(--light-bg);"> 
+        <h1 class="how-it-started-heading fw-bold" style="color: var(--sage-green);">How it started</h1>
+        <div class="editorial-text" style="max-width: 850px;">
+            <p>It all began during the COVID-19 pandemic, when life slowed down and I found myself searching for something to fill my time. I came across crochet online and decided to give it a try, thinking it would simply be a small pastime. But from the moment I picked up the yarn and hook, it felt like love at first try.</p>
+            <p>I’ve always been someone who easily gives up when things don’t go my way. But crochet was different. It didn’t come perfectly at first—I had to undo stitches, start over, and learn things the hard way. Yet somehow, I kept going. Along the way, it taught me patience, to trust the process, and to appreciate the beauty in slow, steady progress.</p>
+            <p class="mb-0">I started by making pieces for myself, then for my family and friends, pouring care into each one. Over time, that feeling grew into something more—a quiet thought of “I want to share this with other people”. What began as a simple hobby slowly turned into something meaningful. Today, each piece is thoughtfully handmade, carrying a story of growth, care, and passion.</p>
+        </div>
+    </section>
+
+    <section class="pt-4 pb-5 mb-5 rounded-5 mt-5" style="background-color: white; border: 3px solid rgba(82, 89, 81, 0.1);">
+    <div class="container px-4">
+        <div class="text-center mb-4">
+            <h2 class="how-it-started-heading fw-bold">Why Crochet?</h2>
+        </div>
+        
+        <div class="row g-4 text-center">
+            <div class="col-md-4">
+                <div class="p-3">
+                    <h5 class="fw-bold" style="color: var(--sage-green);">One of a Kind</h5>
+                    <p class="editorial-text" style="font-size: 0.95rem;">Each stitch is carefully crafted by hand, making every item unique. It allows for full creativity in colors, patterns, and sizes tailored just for you.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="p-3">
+                    <h5 class="fw-bold" style="color: var(--sage-green);">Built to Last</h5>
+                    <p class="editorial-text" style="font-size: 0.95rem;">Handmade pieces are more durable because the maker controls the tension and quality of every loop, ensuring a piece that stands the test of time.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="p-3">
+                    <h5 class="fw-bold" style="color: var(--sage-green);">Slow Fashion</h5>
+                    <p class="editorial-text" style="font-size: 0.95rem;">By choosing crochet, you support sustainable, mindful production that preserves traditional craftsmanship over mass manufacturing.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4 px-lg-5">
+            <p class="editorial-text fst-italic" style="font-size: 1rem; opacity: 0.8;">
+                "Most importantly, handmade crochet preserves traditional craftsmanship while adding personal value and meaning to every single piece."
+            </p>
+        </div>
+    </div>
+</section>
+
+    <section class="row g-4 mt-0 pb-5 justify-content-between">
+        <div class="col-md-5 ps-md-5">
+            <span class="section-label">Our Mission</span>
+            <h3 class="fw-bold mb-2" style="color: var(--sage-green);">Intentional Craftsmanship</h3>
+            <p class="editorial-text" style="font-size: 1.05rem;">To create thoughtfully handmade crochet pieces that bring comfort, warmth, and personality into everyday life—crafted with care, patience, and intention in every stitch.</p>
+        </div>
+
+        <div class="col-md-5 pe-md-5 text-md-end">
+            <span class="section-label">Our Vision</span>
+            <h3 class="fw-bold mb-2" style="color: var(--sage-green);">Growing the Heart</h3>
+            <p class="editorial-text" style="font-size: 1.05rem;">To grow into a meaningful handmade brand that inspires others to appreciate slow, intentional craftsmanship, while sharing the beauty and heart behind every piece with more people.</p>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer-modern py-3"> 
+    <div class="container">
+        <div class="row gy-3 align-items-stretch"> 
+            
+            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+                <div class="mb-2">
+                    <img src="images/ashlogo1.png" alt="Ashlaloops Logo" class="footer-logo" style="max-height: 40px; width: auto;"> 
+                </div>
+                <p class="mb-3 footer-text" style="max-width: 300px; color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.4;">
+                    Dedicated to providing premium handmade pieces and memorable events. 
+                    Your satisfaction is our signature.
+                </p>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start align-items-center">
+    <a href="https://www.facebook.com/profile.php?id=100077359389928" class="social-icon-link" title="Facebook">
+        <img src="social-media/facebook.svg" alt="Facebook" style="height: 20px; width: auto; vertical-align: middle;">
+    </a>
+    
+    <a href="https://www.instagram.com/ashlaloops" class="social-icon-link" title="Instagram">
+        <img src="social-media/instagram.svg" alt="Instagram" style="height: 20px; width: auto; vertical-align: middle;">
+    </a>
+    
+    <a href="https://www.tiktok.com/@ashlaloops" class="social-icon-link" title="TikTok">
+        <img src="social-media/tiktok.svg" alt="TikTok" style="height: 20px; width: auto; vertical-align: middle;">
+    </a>
+</div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 text-center text-lg-start pt-lg-2"> 
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">Contact</h6>
+                <p class="mb-1 footer-text" style="font-size: 13px;"><strong>Phone:</strong> 09532505666</p>
+                <p class="mb-1 footer-text" style="font-size: 13px;"><strong>Email:</strong> ashlaloops@gmail.com</p>
+                <p class="mb-0 footer-text" style="font-size: 13px;"><strong>Loc:</strong> Del Pilar, San Fernando, Pampanga</p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 text-center text-lg-start pt-lg-2">
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">Order Status</h6>
+                <p class="mb-1 footer-text" style="font-size: 13px;">Status: <span style="color: #98fb98;">Open for Commissions</span></p>
+                <p class="mb-0 footer-text" style="font-size: 13px;">Lead Time: 2-3 Weeks</p>
+            </div>
+
+            <div class="col-lg-2 col-md-12 text-center text-lg-end pt-lg-2">
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">INQUIRIES</h6>
+                <a href="contact.html" class="btn btn-ashla rounded-pill shadow-sm" style="font-size: 12px; padding: 6px 16px;">Get In Touch</a>
+            </div>
+        </div>
+
+        <div class="row mt-3 pt-2 border-top" style="border-color: rgba(248, 218, 190, 0.1) !important;">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0 copyright-text" style="font-size: 12px; opacity: 0.6;">© 2026 Ashlaloops. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0 copyright-text" style="font-size: 12px; opacity: 0.6;">Website by <span style="color: #f8dabe;">Team CPHMD</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

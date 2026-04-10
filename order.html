@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now - Ashlaloops</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <style>
+        :root {
+            --sage-green: #7d8e7a; 
+            --warm-bg: #fdfaf7;
+            --accent-gold: #f8dabe;
+        }
+
+        body {
+            background-color: var(--warm-bg);
+            transition: background 0.3s ease;
+        }
+
+        /* Modern aesthetic refinements */
+        .modern-form-card {
+            background: rgba(255, 255, 255, 0.8) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .modern-form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05) !important;
+        }
+
+        /* Input styling */
+        .form-control, .form-select {
+            border: 1.5px solid #eee !important;
+            padding: 12px 20px !important;
+            transition: all 0.2s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--sage-green) !important;
+            box-shadow: 0 0 0 4px rgba(125, 142, 122, 0.1) !important;
+        }
+
+        /* Error Message Styling */
+        .error-msg {
+            color: #d9534f;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 5px;
+            display: none;
+        }
+
+        /* --- BUTTONS --- */
+
+        /* 1. Main Form Button (ORDER NOW) */
+        .btn-ashla {
+            background-color: var(--sage-green) !important;
+            color: white !important;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            font-size: 18px !important;
+            border: none;
+        }
+
+        .btn-ashla:hover {
+            background-color: #6a7a67 !important;
+            transform: scale(1.03);
+        }
+
+        .btn-ashla:disabled {
+            background-color: #a0aaa0 !important;
+            cursor: not-allowed;
+        }
+
+        /* 2. Footer Specific Button (GET IN TOUCH) - Replicating Index Style */
+        .btn-footer-touch {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            border-radius: 50px !important;
+            padding: 6px 16px !important;
+            font-size: 12px !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-footer-touch:hover {
+            background-color: var(--accent-gold) !important;
+            color: var(--sage-green) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: var(--sage-green);
+            margin: 20px auto;
+            opacity: 0.3;
+        }
+
+        /* Success Popup Overlay */
+        #popupOverlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .success-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 2rem;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            max-width: 400px;
+            border: 2px solid var(--sage-green);
+        }
+    </style>
+</head>
+<body>
+
+<div class="logo-wrapper site-footer-modern py-2 text-center">
+    <a href="index.html">
+        <img src="images/ashlogo1.png" alt="Ashlaloops Logo" class="nav-logo" style="height: 40px; width: auto;">
+    </a>
+</div>
+
+<nav class="navbar navbar-expand navbar-dark site-footer-modern p-0 shadow-sm" style="border-top: 1px solid rgba(248, 218, 190, 0.1);">
+    <div class="container-fluid justify-content-center">
+        <ul class="navbar-nav mx-auto gap-3">
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="aboutus.html">ABOUT US</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="events.html">EVENTS</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="services.html">SERVICES</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="contact.html">CONTACT</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1 active" href="order.html">ORDER NOW</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container">
+    <section class="mt-0 p-4 p-md-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                
+                <div class="mb-5">
+                    <span class="text-uppercase fw-bold d-block mb-2" style="color: #525951; letter-spacing: 3px; font-size: 0.75rem;">Tailor-Made</span>
+                    <h1 class="fw-bold display-4 mb-3" style="color: var(--sage-green);">Looking for something unique?</h1>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="modern-form-card p-4 p-md-5 shadow-sm mb-5 mx-auto" style="max-width: 750px;">
+                    <form id="orderForm" action="https://formspree.io/f/xkopayzw" method="POST" class="row g-4 justify-content-center">
+                        
+                        <div class="col-md-10 text-start">
+                            <label class="form-label small fw-bold text-muted ms-2">Select Base Category</label>
+                            <select name="Category" id="category" class="form-select border-light-subtle rounded-pill">
+                                <option selected disabled value="">Choose from our list...</option>
+                                <option value="Flowers">Flowers</option>
+                                <option value="Amigurumis">Amigurumis</option>
+                                <option value="Hats">Hats</option>
+                                <option value="Keychains">Keychains</option>
+                                <option value="Bags">Bags</option>
+                                <option value="Tops">Tops</option>
+                                <option value="Plushies">Plushies</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div id="categoryError" class="error-msg ms-3 mt-1">Please select a category</div>
+                        </div>
+                        
+                        <div class="col-md-10 text-start">
+                            <label class="form-label small fw-bold text-muted ms-2">Or Describe Your Idea</label>
+                            <input type="text" name="Description" id="description" class="form-control border-light-subtle rounded-pill" placeholder="e.g., Sunflower Coasters">
+                            <div id="descError" class="error-msg ms-3 mt-1">Please input your idea</div>
+                        </div>
+
+                        <div class="col-12 mt-5">
+                            <button type="submit" id="submitBtn" class="btn btn-ashla rounded-pill px-5 py-3 fw-bold shadow-sm">
+                                ORDER NOW
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="px-lg-5">
+                    <p class="mb-0 mx-auto lead" style="color: #525951; opacity: 1; line-height: 1.8; max-width: 650px; font-style: italic; font-weight: 450;">
+                        "Whether it's a specific colorway, a new pattern, or a category we haven't explored yet—we are ready to bring your vision to life."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="popupOverlay">
+    <div class="success-content">
+        <h2 class="fw-bold mb-3" style="color: var(--sage-green);">Order Sent!</h2>
+        <p class="text-muted mb-4">Thank you for your interest. We will get back to you at <strong>ashlaloops@gmail.com</strong> soon.</p>
+        <button onclick="closePopup()" class="btn btn-ashla rounded-pill px-4 py-2">Done</button>
+    </div>
+</div>
+
+<footer class="site-footer-modern py-3"> 
+    <div class="container">
+        <div class="row gy-3 align-items-stretch"> 
+            
+            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+                <div class="mb-2">
+                    <img src="images/ashlogo1.png" alt="Ashlaloops Logo" class="footer-logo" style="max-height: 40px; width: auto;"> 
+                </div>
+                <p class="mb-3 footer-text" style="max-width: 300px; color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.4;">
+                    Dedicated to providing premium handmade pieces and memorable events. 
+                    Your satisfaction is our signature.
+                </p>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start align-items-center">
+    <a href="https://www.facebook.com/profile.php?id=100077359389928" class="social-icon-link" title="Facebook">
+        <img src="social-media/facebook.svg" alt="Facebook" style="height: 20px; width: auto; vertical-align: middle;">
+    </a>
+    
+    <a href="https://www.instagram.com/ashlaloops" class="social-icon-link" title="Instagram">
+        <img src="social-media/instagram.svg" alt="Instagram" style="height: 20px; width: auto; vertical-align: middle;">
+    </a>
+    
+    <a href="https://www.tiktok.com/@ashlaloops" class="social-icon-link" title="TikTok">
+        <img src="social-media/tiktok.svg" alt="TikTok" style="height: 20px; width: auto; vertical-align: middle;">
+    </a>
+</div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 text-center text-lg-start pt-lg-2"> 
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">Contact</h6>
+                <p class="mb-1 footer-text" style="font-size: 13px;"><strong>Phone:</strong> 09532505666</p>
+                <p class="mb-1 footer-text" style="font-size: 13px;"><strong>Email:</strong> ashlaloops@gmail.com</p>
+                <p class="mb-0 footer-text" style="font-size: 13px;"><strong>Loc:</strong> Del Pilar, San Fernando, Pampanga</p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 text-center text-lg-start pt-lg-2">
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">Order Status</h6>
+                <p class="mb-1 footer-text" style="font-size: 13px;">Status: <span style="color: #98fb98;">Open for Commissions</span></p>
+                <p class="mb-0 footer-text" style="font-size: 13px;">Lead Time: 2-3 Weeks</p>
+            </div>
+
+            <div class="col-lg-2 col-md-12 text-center text-lg-end pt-lg-2">
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">INQUIRIES</h6>
+                <a href="contact.html" class="btn-footer-touch shadow-sm">Get In Touch</a>
+            </div>
+        </div>
+
+        <div class="row mt-3 pt-2 border-top" style="border-color: rgba(248, 218, 190, 0.1) !important;">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0 copyright-text" style="font-size: 12px; opacity: 0.6;">© 2026 Ashlaloops. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0 copyright-text" style="font-size: 12px; opacity: 0.6;">Website by <span style="color: #f8dabe;">Team CPHMD</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const form = document.getElementById('orderForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const overlay = document.getElementById('popupOverlay');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault(); 
+
+        const category = document.getElementById('category');
+        const description = document.getElementById('description');
+        let isValid = true;
+
+        if (category.value === "") {
+            document.getElementById('categoryError').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('categoryError').style.display = 'none';
+        }
+
+        if (description.value.trim() === "") {
+            document.getElementById('descError').style.display = 'block';
+            isValid = false;
+        } else {
+            document.getElementById('descError').style.display = 'none';
+        }
+
+        if (!isValid) return; 
+
+        submitBtn.disabled = true;
+        submitBtn.innerText = "SENDING...";
+
+        const formData = new FormData(form);
+        
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+                overlay.style.display = 'flex';
+                form.reset();
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            alert("Connection error. Check your internet.");
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerText = "ORDER NOW";
+        }
+    });
+
+    function closePopup() {
+        overlay.style.display = 'none';
+    }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

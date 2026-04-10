@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Ashlaloops</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <style>
+        :root {
+            --sage-green: #7d8e7a;
+            --dark-sage: #525951;
+        }
+
+        .btn-ashla {
+            background-color: var(--sage-green) !important;
+            color: white !important;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            border: none;
+        }
+
+        .btn-ashla:hover {
+            background-color: #6a7a67 !important;
+            transform: scale(1.05);
+        }
+
+        .card-title-custom {
+            color: var(--sage-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        
+        .service-card {
+            transition: transform 0.3s ease;
+            border-radius: 1.5rem !important;
+            border: none;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* LIGHTBOX SPECIFIC STYLES */
+        .modal-body img.img-fluid {
+            cursor: zoom-in;
+            transition: transform 0.2s ease;
+        }
+
+        .modal-body img.img-fluid:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        #lightboxModal {
+            background: rgba(0, 0, 0, 0.85);
+        }
+
+        #lightboxImage {
+            max-height: 80vh;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+<div class="logo-wrapper site-footer-modern py-2 text-center">
+    <a href="index.html">
+        <img src="images/ashlogo1.png" alt="Ashlaloops Logo" class="nav-logo" style="height: 40px; width: auto;">
+    </a>
+</div>
+
+<nav class="navbar navbar-expand navbar-dark site-footer-modern p-0 shadow-sm" style="border-top: 1px solid rgba(248, 218, 190, 0.1);">
+    <div class="container-fluid justify-content-center">
+        <ul class="navbar-nav mx-auto gap-3">
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="aboutus.html">ABOUT US</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="events.html">EVENTS</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1 active" href="services.html">SERVICES</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="contact.html">CONTACT</a></li>
+            <li class="nav-item"><a class="nav-link small-nav-link py-1" href="order.html">ORDER NOW</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main class="container pt-4 pb-5">
+    <div class="text-center mb-5 mt-3">
+        <h1 class="display-4 fw-bold" style="color: var(--dark-sage); letter-spacing: -1px;">Our Creations</h1>
+        <p class="lead" style="color: var(--dark-sage); opacity: 0.8;">Click a category to view our full collection.</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card service-card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#flowersModal" style="cursor: pointer;">
+                <img src="images/flowers/mainflower.png" class="card-img-top p-2" alt="Flowers">
+                <div class="card-body text-center pt-0">
+                    <h5 class="card-title-custom">Flowers</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card service-card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#amiModal" style="cursor: pointer;">
+                <img src="images/amigurumi/mainamigurumi.png" class="card-img-top p-2" alt="Amigurumis">
+                <div class="card-body text-center pt-0">
+                    <h5 class="card-title-custom">Amigurumis</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card service-card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#hatsModal" style="cursor: pointer;">
+                <img src="images/hats/mainhat.png" class="card-img-top p-2" alt="Hats">
+                <div class="card-body text-center pt-0">
+                    <h5 class="card-title-custom">Hats</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card service-card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#keychainsModal" style="cursor: pointer;">
+                <img src="images/keychains/mainkeychain.png" class="card-img-top p-2" alt="Keychains">
+                <div class="card-body text-center pt-0">
+                    <h5 class="card-title-custom">Keychains</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card service-card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#bagsModal" style="cursor: pointer;">
+                <img src="images/bags/mainbag.png" class="card-img-top p-2" alt="Bags">
+                <div class="card-body text-center pt-0">
+                    <h5 class="card-title-custom">Bags</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card service-card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#topsModal" style="cursor: pointer;">
+                <img src="images/tops/maintop.png" class="card-img-top p-2" alt="Tops">
+                <div class="card-body text-center pt-0">
+                    <h5 class="card-title-custom">Tops</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6 col-md-4 col-lg-3">
+            <div class="card service-card h-100 shadow-sm" data-bs-toggle="modal" data-bs-target="#plushiesModal" style="cursor: pointer;">
+                <img src="images/plushies/mainplushy.png" class="card-img-top p-2" alt="Plushies">
+                <div class="card-body text-center pt-0">
+                    <h5 class="card-title-custom">Plushies</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5 mb-4">
+        <div class="col-lg-8">
+            <div class="p-4 rounded-5 text-center shadow-sm" style="background: rgba(255, 255, 255, 0.5); border: 1px dashed var(--sage-green);">
+                <div class="d-md-flex align-items-center justify-content-center gap-4">
+                    <p class="mb-3 mb-md-0 fs-4 fw-bold" style="color: var(--dark-sage);">Want to customize your orders?</p>
+                    <a href="order.html" class="btn btn-ashla rounded-pill px-4 py-2 shadow-sm fs-6">START A CUSTOM ORDER</a>
+                </div>
+                <p class="medium mt-2 text-muted mb-0">We love bringing your unique ideas to life!</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="modal fade" id="flowersModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-5">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="fw-bold mt-3 ms-3" style="color: var(--sage-green);">Flowers Collection</h4>
+                <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/flowers/flower1.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower2.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower3.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower5.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower6.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower7.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower8.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower9.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower10.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower11.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower12.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower13.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower14.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower15.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower16.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower17.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower18.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower19.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower20.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower21.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower23.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower22.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                    <div class="col-4"><img src="images/flowers/flower24.png" class="img-fluid rounded-4 shadow-sm" alt="Flower"></div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="order.html" class="btn btn-ashla rounded-pill px-4">Inquire Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="amiModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-5">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="fw-bold mt-3 ms-3" style="color: var(--sage-green);">Amigurumi Gallery</h4>
+                <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/amigurumi/amigurumi1.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi2.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi3.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi4.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi5.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi6.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi7.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi8.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi9.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi10.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi11.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi12.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi13.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi14.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi15.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi16.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi17.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi18.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi19.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi20.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi21.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi22.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi23.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi24.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi25.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi26.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi27.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi28.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi29.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi30.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi31.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi32.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi33.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi34.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi35.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi36.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi37.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi38.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi39.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                    <div class="col-4"><img src="images/amigurumi/amigurumi40.png" class="img-fluid rounded-4 shadow-sm" alt="Ami"></div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="order.html" class="btn btn-ashla rounded-pill px-4">Inquire Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="hatsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-5">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="fw-bold mt-3 ms-3" style="color: var(--sage-green);">Hats Collection</h4>
+                <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/hats/hat1.png" class="img-fluid rounded-4 shadow-sm" alt="Hat"></div>
+                    <div class="col-4"><img src="images/hats/hat2.png" class="img-fluid rounded-4 shadow-sm" alt="Hat"></div>
+                    <div class="col-4"><img src="images/hats/hat3.png" class="img-fluid rounded-4 shadow-sm" alt="Hat"></div>
+                    <div class="col-4"><img src="images/hats/hat4.png" class="img-fluid rounded-4 shadow-sm" alt="Hat"></div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="order.html" class="btn btn-ashla rounded-pill px-4">Inquire Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="keychainsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-5">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="fw-bold mt-3 ms-3" style="color: var(--sage-green);">Keychains Gallery</h4>
+                <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/keychains/keychain1.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain2.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain3.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain4.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain5.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain6.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain7.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain8.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain9.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain10.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain11.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain12.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain13.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain14.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain15.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain16.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain17.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain18.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain19.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain20.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain21.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain22.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                    <div class="col-4"><img src="images/keychains/keychain23.png" class="img-fluid rounded-4 shadow-sm" alt="Keychain"></div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="order.html" class="btn btn-ashla rounded-pill px-4">Inquire Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="bagsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-5">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="fw-bold mt-3 ms-3" style="color: var(--sage-green);">Bags Collection</h4>
+                <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/bags/bag1.png" class="img-fluid rounded-4 shadow-sm" alt="Bag"></div>
+                    <div class="col-4"><img src="images/bags/bag2.png" class="img-fluid rounded-4 shadow-sm" alt="Bag"></div>
+                    <div class="col-4"><img src="images/bags/bag3.png" class="img-fluid rounded-4 shadow-sm" alt="Bag"></div>
+                    <div class="col-4"><img src="images/bags/bag4.png" class="img-fluid rounded-4 shadow-sm" alt="Bag"></div>
+                    <div class="col-4"><img src="images/bags/bag5.png" class="img-fluid rounded-4 shadow-sm" alt="Bag"></div>
+                    <div class="col-4"><img src="images/bags/bag6.png" class="img-fluid rounded-4 shadow-sm" alt="Bag"></div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="order.html" class="btn btn-ashla rounded-pill px-4">Inquire Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="topsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-5">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="fw-bold mt-3 ms-3" style="color: var(--sage-green);">Crochet Tops</h4>
+                <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/tops/top3.png" class="img-fluid rounded-4 shadow-sm" alt="Top"></div>
+                    <div class="col-4"><img src="images/tops/top4.png" class="img-fluid rounded-4 shadow-sm" alt="Top"></div>
+                    <div class="col-4"><img src="images/tops/top5.png" class="img-fluid rounded-4 shadow-sm" alt="Top"></div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="order.html" class="btn btn-ashla rounded-pill px-4">Inquire Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="plushiesModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 rounded-5">
+            <div class="modal-header border-0 pb-0">
+                <h4 class="fw-bold mt-3 ms-3" style="color: var(--sage-green);">Plushies Gallery</h4>
+                <button type="button" class="btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4">
+                <div class="row g-3">
+                    <div class="col-4"><img src="images/plushies/plushy1.png" class="img-fluid rounded-4 shadow-sm" alt="Plushy"></div>
+                    <div class="col-4"><img src="images/plushies/plushy2.png" class="img-fluid rounded-4 shadow-sm" alt="Plushy"></div>
+                    <div class="col-4"><img src="images/plushies/plushy3.png" class="img-fluid rounded-4 shadow-sm" alt="Plushy"></div>
+                    <div class="col-4"><img src="images/plushies/plushy4.png" class="img-fluid rounded-4 shadow-sm" alt="Plushy"></div>
+                    <div class="col-4"><img src="images/plushies/plushy5.png" class="img-fluid rounded-4 shadow-sm" alt="Plushy"></div>
+                    <div class="col-4"><img src="images/plushies/plushy6.png" class="img-fluid rounded-4 shadow-sm" alt="Plushy"></div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <a href="order.html" class="btn btn-ashla rounded-pill px-4">Inquire Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content border-0 bg-transparent">
+            <div class="modal-header border-0 p-0">
+                <button type="button" class="btn-close btn-close-white ms-auto m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0 text-center">
+                <img src="" id="lightboxImage" class="img-fluid rounded shadow-lg" alt="Full view">
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer-modern py-3"> <div class="container">
+        <div class="row gy-3 align-items-stretch"> 
+            
+            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+                <div class="mb-2">
+                    <img src="images/ashlogo1.png" alt="Ashlaloops Logo" class="footer-logo" style="max-height: 40px; width: auto;"> </div>
+                <p class="mb-3 footer-text" style="max-width: 300px; color: rgba(255,255,255,0.7); font-size: 13px; line-height: 1.4;">
+                    Dedicated to providing premium handmade pieces and memorable events. 
+                    Your satisfaction is our signature.
+                </p>
+                <div class="d-flex gap-3 justify-content-center justify-content-lg-start align-items-center">
+    <a href="https://www.facebook.com/profile.php?id=100077359389928" class="social-icon-link" title="Facebook">
+        <img src="social-media/facebook.svg" alt="Facebook" style="height: 20px; width: auto; vertical-align: middle;">
+    </a>
+    
+    <a href="https://www.instagram.com/ashlaloops" class="social-icon-link" title="Instagram">
+        <img src="social-media/instagram.svg" alt="Instagram" style="height: 20px; width: auto; vertical-align: middle;">
+    </a>
+    
+    <a href="https://www.tiktok.com/@ashlaloops" class="social-icon-link" title="TikTok">
+        <img src="social-media/tiktok.svg" alt="TikTok" style="height: 20px; width: auto; vertical-align: middle;">
+    </a>
+</div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 text-center text-lg-start pt-lg-2"> 
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">Contact</h6>
+                <p class="mb-1 footer-text" style="font-size: 13px;"><strong>Phone:</strong> 09532505666</p>
+                <p class="mb-1 footer-text" style="font-size: 13px;"><strong>Email:</strong> ashlaloops@gmail.com</p>
+                <p class="mb-0 footer-text" style="font-size: 13px;"><strong>Loc:</strong> Del Pilar, San Fernando, Pampanga</p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 text-center text-lg-start pt-lg-2">
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">Order Status</h6>
+                <p class="mb-1 footer-text" style="font-size: 13px;">Status: <span style="color: #98fb98;">Open for Commissions</span></p>
+                <p class="mb-0 footer-text" style="font-size: 13px;">Lead Time: 2-3 Weeks</p>
+            </div>
+
+            <div class="col-lg-2 col-md-12 text-center text-lg-end pt-lg-2">
+                <h6 class="footer-heading mb-2" style="font-size: 14px; letter-spacing: 1px;">INQUIRIES</h6>
+                <a href="contact.html" class="btn btn-ashla rounded-pill shadow-sm" style="font-size: 12px; padding: 6px 16px;">Get In Touch</a>
+            </div>
+        </div>
+
+        <div class="row mt-3 pt-2 border-top" style="border-color: rgba(248, 218, 190, 0.1) !important;">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0 copyright-text" style="font-size: 12px; opacity: 0.6;">© 2026 Ashlaloops. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0 copyright-text" style="font-size: 12px; opacity: 0.6;">Website by <span style="color: #f8dabe;">Team CPHMD</span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // LIGHTBOX LOGIC
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('img-fluid') && e.target.closest('.modal-body')) {
+            const imageSrc = e.target.getAttribute('src');
+            document.getElementById('lightboxImage').src = imageSrc;
+            const lightbox = new bootstrap.Modal(document.getElementById('lightboxModal'));
+            lightbox.show();
+        }
+    });
+</script>
+
+</body>
+</html>

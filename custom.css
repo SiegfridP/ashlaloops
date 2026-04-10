@@ -1,0 +1,363 @@
+/* ==========================================================================
+   1. GLOBAL VARIABLES & BODY
+   ========================================================================== */
+:root {
+    --sage-green: #525951;
+    --peach-accent: #f8dabe;
+    --light-bg: #fdf6f0;
+    --footer-pattern: linear-gradient(rgba(82, 89, 81, 0.8), rgba(82, 89, 81, 0.8)), url('images/resized_image.png');
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body {
+    background-color: white;
+    color: var(--sage-green);
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. INTRO LOADING OVERLAY
+   ========================================================================== */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fae4d0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.spinning-logo div {
+    width: 250px;
+    height: 250px;
+    animation: spin 1.5s linear infinite; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinning-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.loaded {
+    animation: swipeUp 0.8s ease-in forwards !important;
+}
+
+/* ==========================================================================
+   3. NAVIGATION (BALANCED: LARGE LOGO + SLIM NAV)
+   ========================================================================== */
+
+/* The Logo Container */
+.logo-wrapper {
+    background: var(--footer-pattern) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-blend-mode: overlay !important;
+    
+    /* The "Gap" line thickness - set to 2px for a very slim look */
+    margin-bottom: .5px !important; 
+    
+    border-bottom: 1px solid rgba(248, 218, 190, 0.1);
+    
+    /* Slightly more padding to accommodate the bigger logo */
+    padding-top: 15px !important;
+    padding-bottom: 10px !important;
+    line-height: 0; 
+}
+
+/* The Navigation Bar */
+.custom-navbar-slim {
+    background: var(--footer-pattern) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-blend-mode: overlay !important;
+    min-height: 0 !important; 
+    height: auto !important;
+    padding: 0 !important;
+    border-top: 1px solid rgba(248, 218, 190, 0.1) !important;
+    border-bottom: 1px solid rgba(248, 218, 190, 0.1);
+}
+
+.nav-logo {
+    /* Increased from 45px to 65px to make it "Slightly Bigger" */
+    height: 65px !important; 
+    width: auto;      
+    filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.5)); 
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+/* The Links (About Us, etc.) - Thinner Edition */
+.small-nav-link {
+    font-size: 13px !important; 
+    
+    /* CHANGE: Dropped from 700 to 400 for a much thinner look */
+    font-weight: 400 !important; 
+  
+    color: rgba(255, 255, 255, 0.9) !important; /* Slightly brighter to help thin text pop */
+    
+    /* Ultra-slim vertical padding */
+    padding-top: 5px !important;   
+    padding-bottom: 5px !important; 
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    
+    line-height: 1.1 !important; 
+    transition: all 0.3s ease;
+    text-shadow: none !important; /* Removed shadow to make the letters look crisper and thinner */
+}
+
+/* Make sure the active link doesn't get thick/bolded */
+.small-nav-link.active {
+    font-weight: 500 !important; /* Only a tiny bit thicker so you know where you are */
+    border-bottom: 1px solid var(--peach-accent) !important;
+}
+
+/* --- Logo Hover Effect --- */
+.nav-logo {
+    /* ... your existing styles ... */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.nav-logo:hover {
+    transform: scale(1.1); /* Enlarges just the logo */
+}
+
+/* --- Nav Link Hover & Active States --- */
+.small-nav-link {
+    /* ... your existing styles ... */
+    position: relative;
+    transition: all 0.3s ease !important;
+}
+
+/* The Hover "Highlight" */
+.small-nav-link:hover {
+    color: var(--peach-accent) !important;
+    background-color: rgba(248, 218, 190, 0.1); /* Subtle light peach glow background */
+    border-radius: 4px;
+}
+
+/* The "You Are Here" Active State */
+/* This changes the color and adds a small underline to indicate the current page */
+.small-nav-link.active, 
+.small-nav-link[aria-current="page"] {
+    color: var(--peach-accent) !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid var(--peach-accent);
+}
+/* ==========================================================================
+   4. HERO & VIDEO SECTION
+   ========================================================================== */
+.hero-video-wrapper {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.hero-video-wrapper video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Default zoom: fill the container exactly */
+    width: 100%;
+    height: 100%;
+    /* Standard centering */
+    transform: translate(-50%, -50%);
+    /* Ensures the video covers the area without distortion */
+    object-fit: cover; 
+    z-index: 1;
+}
+
+.video-overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: rgba(82, 89, 81, 0.5); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+/* ==========================================================================
+   5. SERVICE CARDS & SECTIONS
+   ========================================================================== */
+.custom-section {
+    background-color: var(--light-bg);
+    border-radius: 40px;
+    border: 2px dashed var(--peach-accent);
+}
+
+.service-card {
+    border: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    background: var(--light-bg);
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(82, 89, 81, 0.15);
+    background: #ffffff;
+    border: 1px solid var(--peach-accent);
+}
+
+.service-card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    border-radius: 20px !important;
+}
+
+.card-title-custom {
+    color: var(--sage-green);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   6. FOOTER SECTION
+   ========================================================================== */
+.site-footer-modern {
+    background: var(--footer-pattern) !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-blend-mode: overlay !important;
+    color: #ffffff !important;
+    padding: 3rem 0;
+    border-top: 1px solid rgba(248, 218, 190, 0.1);
+}
+
+.site-footer-modern h6 {
+    letter-spacing: 1.5px;
+    color: var(--peach-accent) !important;
+    text-transform: uppercase;
+}
+
+.footer-logo {
+    height: 60px;
+    width: auto;
+    filter: drop-shadow(0px 3px 6px rgba(0,0,0,0.5));
+}
+
+.social-icon-link {
+    font-size: 0.7rem;
+    font-weight: 800;
+    color: var(--peach-accent);
+    text-decoration: none;
+    padding: 6px 10px;
+    border: 1.5px solid var(--peach-accent);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.social-icon-link:hover {
+    color: var(--sage-green);
+    background-color: var(--peach-accent);
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   7. BUTTONS & UTILITIES
+   ========================================================================== */
+.btn-ashla {
+    background-color: var(--sage-green);
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 25px;
+    transition: all 0.3s ease;
+}
+
+.btn-ashla:hover {
+    background-color: var(--peach-accent);
+    color: var(--sage-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.text-primary {
+    color: var(--sage-green) !important;
+}
+
+/* ==========================================================================
+   8. KEYFRAMES
+   ========================================================================== */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes swipeUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); visibility: hidden; }
+}
+
+/* ==========================================================================
+   9. RESPONSIVE ADJUSTMENTS (The "Match the PC Look" Fixes)
+   ========================================================================== */
+
+/* Tablet & Mobile (Screens smaller than 992px) */
+@media (max-width: 991.98px) {
+    /* Scale down the Hero Text so it doesn't wrap into 4 lines */
+    .hero-video-wrapper h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-video-wrapper .lead {
+        font-size: 1.1rem !important;
+    }
+
+    /* Adjust the Slim Nav so the links don't overlap or hide */
+    .navbar-nav {
+        gap: 10px !important; /* Shorter gaps between links */
+    }
+
+    .small-nav-link {
+        font-size: 11px !important; /* Slightly smaller text for links */
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+/* Small Mobile (Screens smaller than 576px) */
+@media (max-width: 575.98px) {
+    /* Prevent the Hero Video from becoming too short/squished */
+    .hero-video-wrapper {
+        height: 50vh !important; 
+    }
+
+    /* Make the Order Form fill more of the screen width */
+    .modern-form-card {
+        padding: 1.5rem !important; /* Less inner padding so the form has more room */
+        width: 95% !important;
+    }
+
+    /* Adjust Footer Layout for stacking */
+    .site-footer-modern {
+        text-align: center !important;
+    }
+    
+    .footer-logo {
+        height: 45px !important; /* Smaller logo for mobile footers */
+    }
+}
